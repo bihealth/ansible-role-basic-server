@@ -1,0 +1,24 @@
+---
+language: python
+
+services:
+  - docker
+
+env:
+  matrix:
+    - MOLECULE_DISTRO: centos:7
+    - MOLECULE_DISTRO: fedora:27
+    - MOLECULE_DISTRO: fedora:28
+    - MOLECULE_DISTRO: ubuntu:xenial
+    - MOLECULE_DISTRO: ubuntu:bionic
+    - MOLECULE_DISTRO: debian:stretch
+
+before_install:
+  - sudo apt-get -qq update
+install:
+  - pip install molecule docker-py
+
+script:
+  - molecule --version
+  - ansible --version
+  - molecule test

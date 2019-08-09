@@ -1,0 +1,25 @@
+---
+
+- name: perform installation
+  include_tasks: install/{{ ansible_os_family }}.yml
+
+- name: fixup some locale issues
+  lineinfile:
+    dest: /etc/locale.conf
+    line: 'LANG="{{ item }}"'
+    state: present
+    create: true
+  loop:
+    - "en_US.UTF-8"
+  when: ansible_os_family == "RedHat"
+
+- name: install helpful tools
+  yum:
+    name:
+      - bind-utils
+      - git
+      - htop
+      - less
+      - nmap-ncat
+      - vim
+    state: present
