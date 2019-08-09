@@ -7,10 +7,11 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_locale(host):
-    f = host.file("/etc/locale.conf")
+    if host.system_info.distribution not in ('debian', 'ubuntu'):
+        f = host.file("/etc/locale.conf")
 
-    assert f.exists
-    assert f.contains('LANG="en_US.UTF-8"')
+        assert f.exists
+        assert f.contains('LANG="en_US.UTF-8"')
 
 
 def test_packages(host):

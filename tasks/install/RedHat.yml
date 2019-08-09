@@ -2,3 +2,6 @@
 
 - name: install EPEL repository
   yum: name=epel-release state=present
+  when: >
+    ansible_distribution == 'CentOS' or
+    ansible_distribution == 'Red Hat Enterprise Linux'
