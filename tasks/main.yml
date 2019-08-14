@@ -12,25 +12,3 @@
   loop:
     - "en_US.UTF-8"
   when: ansible_os_family == "RedHat"
-
-- name: install helpful tools (RedHat family)
-  yum:
-    name:
-      - bind-utils
-      - git
-      - htop
-      - less
-      - nmap-ncat
-      - vim
-    state: present
-  when: ansible_os_family == "RedHat"
-
-- name: install helpful tools (Debian family)
-  apt:
-    name:
-      - dnsutils
-      - git
-      - htop
-      - nmap
-      - vim-nox
-  when: ansible_os_family == "Debian"

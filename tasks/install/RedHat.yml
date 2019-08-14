@@ -2,6 +2,17 @@
 
 - name: install EPEL repository
   yum: name=epel-release state=present
-  when: >
+  when: >  # not for Fedora
     ansible_distribution == 'CentOS' or
     ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: install helpful tools (RedHat family)
+  yum:
+    name:
+      - bind-utils
+      - git
+      - htop
+      - less
+      - nmap-ncat
+      - vim
+    state: present

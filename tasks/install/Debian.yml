@@ -1,3 +1,10 @@
 ---
 
-# nothing to be done
+- name: install helpful tools (Debian family)
+  apt:
+    name:
+      - dnsutils
+      - git
+      - htop
+      - nmap
+      - vim-nox
