@@ -1,8 +1,9 @@
 # Changelog
 
-## HEAD (unreleased)
+## v0.2.0
 
 - Switching to geerlingguy images.
+- DNS configuration.
 
 ## v0.1.1
 

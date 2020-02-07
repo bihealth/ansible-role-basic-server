@@ -5,3 +5,6 @@ basic_server_configure_resolv_conf: false
 
 # DNS resolvers to use
 basic_server_dns_resolvers: []
+
+# /etc/resolv.conf "search" value.
+basic_server_resolv_conf_search: false

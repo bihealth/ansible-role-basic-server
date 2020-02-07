@@ -15,7 +15,11 @@
 
 - name: configure /etc/resolv.conf
   copy:
-    src: |
+    content: |
+      {% if basic_server_resolv_conf_search %}
+      search {{ basic_server_resolv_conf_search }}
+      {% endif %}
+
       {% for resolver in basic_server_dns_resolvers %}
       nameserver {{ resolver }}
       {% endfor %}
