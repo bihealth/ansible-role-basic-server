@@ -12,3 +12,15 @@
   loop:
     - "en_US.UTF-8"
   when: ansible_os_family == "RedHat"
+
+- name: configure /etc/resolv.conf
+  copy:
+    src: |
+      {% for resolver in basic_server_dns_resolvers %}
+      nameserver {{ resolver }}
+      {% endfor %}
+    dest: /etc/resolv.conf
+    owner: root
+    group: root
+    mode: u=rw,go=r
+  when: basic_server_configure_resolv_conf

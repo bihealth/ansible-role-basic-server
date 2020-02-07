@@ -1,0 +1,7 @@
+---
+
+# Whether or not to touch resolv.conf file
+basic_server_configure_resolv_conf: false
+
+# DNS resolvers to use
+basic_server_dns_resolvers: []
